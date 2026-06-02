@@ -43,7 +43,7 @@ export function HomePage() {
               <span className="text-4xl">🎲</span>
               <span className="text-4xl">🖨️</span>
             </div>
-            <h1 className="mt-4 text-5xl font-black leading-tight tracking-tight text-white">
+            <h1 className="mt-4 text-4xl sm:text-5xl font-black leading-tight tracking-tight text-white">
               Juegos de mesa<br />
               <span className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
                 &amp; Impresión 3D

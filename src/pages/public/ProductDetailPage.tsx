@@ -138,8 +138,8 @@ export function ProductDetailPage() {
 
             <div className="rounded-xl border border-zinc-700 bg-zinc-800/50 p-4">
               {product.offer_percentage > 0 ? (
-                <div className="flex items-baseline gap-3">
-                  <span className="text-4xl font-black text-amber-400">
+                <div className="flex flex-wrap items-baseline gap-3">
+                  <span className="text-3xl sm:text-4xl font-black text-amber-400">
                     {formatPrice(discountedPrice)}
                   </span>
                   <span className="text-lg text-zinc-500 line-through">{formatPrice(product.price)}</span>
@@ -148,7 +148,7 @@ export function ProductDetailPage() {
                   </span>
                 </div>
               ) : (
-                <span className="text-4xl font-black text-amber-400">{formatPrice(product.price)}</span>
+                <span className="text-3xl sm:text-4xl font-black text-amber-400">{formatPrice(product.price)}</span>
               )}
             </div>
 
