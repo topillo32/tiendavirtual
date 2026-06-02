@@ -1,6 +1,23 @@
-import { Outlet, Link } from 'react-router-dom'
+import React from 'react'
+import { Outlet, Link, useNavigate } from 'react-router-dom'
+import { signOut } from '../services/supabase/authService'
 
 export function AdminLayout() {
+  const navigate = useNavigate()
+  const [loading, setLoading] = React.useState(false)
+
+  const handleLogout = async () => {
+    setLoading(true)
+    try {
+      await signOut()
+      navigate('/admin/login')
+    } catch (err) {
+      console.error('Error al cerrar sesión:', err)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900">
       <header className="border-b bg-white px-6 py-4 shadow-sm">
@@ -17,8 +34,12 @@ export function AdminLayout() {
             <Link to="productos/nuevo" className="hover:text-slate-900">
               Nuevo producto
             </Link>
-            <button className="rounded-md bg-slate-900 px-4 py-2 text-white hover:bg-slate-700">
-              Cerrar sesión
+            <button
+              onClick={handleLogout}
+              disabled={loading}
+              className="rounded-md bg-slate-900 px-4 py-2 text-white hover:bg-slate-700 disabled:opacity-50"
+            >
+              {loading ? 'Cerrando sesión...' : 'Cerrar sesión'}
             </button>
           </nav>
         </div>
