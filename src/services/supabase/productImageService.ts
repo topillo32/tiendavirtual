@@ -1,5 +1,6 @@
 import { supabase } from './supabaseClient'
 import type { ProductImage } from '../../types/product'
+import { logger } from '../../utils/logger'
 
 const bucketName = 'products'
 
@@ -21,7 +22,7 @@ export async function uploadProductImages(productId: string, files: File[], isPr
         })
 
       if (uploadError) {
-        console.error(`[uploadProductImages] Storage error para "${file.name}":`, uploadError)
+        logger.error(`[uploadProductImages] Storage error para "${file.name}":`, uploadError)
         throw uploadError
       }
 
@@ -30,8 +31,8 @@ export async function uploadProductImages(productId: string, files: File[], isPr
 
       // Debug RLS
       const { data: sessionData } = await supabase.auth.getSession()
-      console.log('[uploadProductImages] Sesión activa:', sessionData?.session?.user?.id ?? 'NO HAY SESIÓN')
-      console.log('[uploadProductImages] Insertando en product_images:', { product_id: productId, image_url, is_primary: isPrimary && index === 0 })
+      logger.log('[uploadProductImages] Sesión activa:', sessionData?.session?.user?.id ?? 'NO HAY SESIÓN')
+      logger.log('[uploadProductImages] Insertando en product_images:', { product_id: productId, image_url, is_primary: isPrimary && index === 0 })
 
       // Crear registro en base de datos
       const { data: dbData, error: dbError } = await supabase
@@ -47,14 +48,14 @@ export async function uploadProductImages(productId: string, files: File[], isPr
         .single()
 
       if (dbError) {
-        console.error(`[uploadProductImages] DB error para "${file.name}":`, dbError)
+        logger.error(`[uploadProductImages] DB error para "${file.name}":`, dbError)
         throw dbError
       }
 
-      console.log(`[uploadProductImages] "${file.name}" subida correctamente → ${image_url}`)
+      logger.log(`[uploadProductImages] "${file.name}" subida correctamente → ${image_url}`)
       return { success: true, data: dbData }
     } catch (error) {
-      console.error(`[uploadProductImages] Falló "${file.name}":`, error)
+      logger.error(`[uploadProductImages] Falló "${file.name}":`, error)
       return { success: false, error }
     }
   })

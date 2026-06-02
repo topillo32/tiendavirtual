@@ -37,25 +37,25 @@ export function HomePage() {
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/80 via-zinc-950/40 to-transparent" />
 
-        <div className="absolute inset-0 flex items-center px-8 py-20">
+        <div className="absolute inset-0 flex items-center px-6 py-12 md:px-8 md:py-20">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-3">
-              <span className="text-4xl">🎲</span>
-              <span className="text-4xl">🖨️</span>
+            <div className="flex items-center gap-2 md:gap-3">
+              <span className="text-3xl md:text-4xl">🎲</span>
+              <span className="text-3xl md:text-4xl">🖨️</span>
             </div>
-            <h1 className="mt-4 text-4xl sm:text-5xl font-black leading-tight tracking-tight text-white">
+            <h1 className="mt-3 md:mt-4 text-3xl sm:text-4xl md:text-5xl font-black leading-tight tracking-tight text-white">
               Juegos de mesa<br />
               <span className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
                 &amp; Impresión 3D
               </span>
             </h1>
-            <p className="mt-5 text-lg text-zinc-300">
+            <p className="mt-4 md:mt-5 text-base md:text-lg text-zinc-300">
               Piezas únicas, juegos clásicos y creaciones impresas en 3D. Todo hecho con pasión.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-6 md:mt-8 flex flex-wrap gap-4">
               <Link
                 to="/productos"
-                className="inline-flex items-center gap-2 rounded-xl bg-amber-400 px-7 py-3.5 font-bold text-zinc-900 shadow-lg transition hover:bg-amber-300 hover:shadow-amber-400/30"
+                className="inline-flex items-center gap-2 rounded-xl bg-amber-400 px-5 py-3 md:px-7 md:py-3.5 text-sm md:text-base font-bold text-zinc-900 shadow-lg transition hover:bg-amber-300 hover:shadow-amber-400/30"
               >
                 Ver catálogo →
               </Link>

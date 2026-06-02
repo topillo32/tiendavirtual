@@ -89,16 +89,16 @@ export function AdminProductsPage() {
 
   return (
     <div className="space-y-6">
-      <header className="flex flex-col gap-4 rounded-xl bg-white p-6 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+      <header className="flex flex-col gap-4 rounded-xl bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:p-6">
         <div>
-          <h1 className="text-2xl font-semibold">Productos</h1>
+          <h1 className="text-xl font-semibold sm:text-2xl">Productos</h1>
           <p className="mt-1 text-sm text-slate-600">
             {filteredProducts.length} producto(s) en total
           </p>
         </div>
         <Link
           to="/admin/productos/nuevo"
-          className="inline-flex items-center rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700"
+          className="inline-flex items-center justify-center rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700"
         >
           + Nuevo producto
         </Link>

@@ -12,6 +12,7 @@ import {
   deleteProductImage,
 } from '../../services/supabase/productImageService'
 import type { Product, ProductImage } from '../../types/product'
+import { logger } from '../../utils/logger'
 
 export function AdminProductFormPage() {
   const { id } = useParams<{ id: string }>()
@@ -111,7 +112,7 @@ export function AdminProductFormPage() {
             return `Imagen ${i + 1}: ${msg}`
           })
           .join('\n')
-        console.error('[handleImageUpload] Imágenes fallidas:', failed)
+        logger.error('[handleImageUpload] Imágenes fallidas:', failed)
         alert(`${failed.length} imagen(s) falló al subir:\n\n${errorMessages}`)
       }
     } catch (err) {
@@ -356,7 +357,7 @@ export function AdminProductFormPage() {
 
         {/* Imágenes */}
         {isEditing && (
-          <div className="rounded-xl bg-white p-6 shadow-sm space-y-6">
+          <div className="rounded-xl bg-white p-4 shadow-sm space-y-6 sm:p-6">
             <div>
               <h3 className="mb-4 font-semibold text-slate-900">Imágenes del producto</h3>
               <p className="text-sm text-slate-600 mb-4">
